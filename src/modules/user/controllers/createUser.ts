@@ -9,6 +9,7 @@ export const createUser = async (req: Request, res: Response) => {
 
     const user = await pc.user.create({
       data: {
+        id: userDetails.id,
         name: userDetails.name,
         email: userDetails.email,
         role: userDetails.role,
@@ -28,9 +29,9 @@ export const createUser = async (req: Request, res: Response) => {
         },
       },
     });
-    console.log(user);
-    res.status(201).send(JSON.stringify(user));
+    res.status(201).send(user);
   } catch (error) {
+    console.log(error);
     res.status(500).send(error);
   }
 };
